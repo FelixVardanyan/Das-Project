@@ -1,0 +1,33 @@
+.gag:hover {
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+
+.gag {
+    font-size: 24px;
+}
+
+.nkar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.nkar img {
+    width: 400px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.home_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 150px;    
+}
