@@ -4,6 +4,7 @@ import City from "../../assets/CityBack.jpg"
 
 function Weather() {
     return (
+        <div className="background">
             <div className="hastatutyun">
                 <h1 className="vernagir">CITY WEATHER WIDGET</h1>
 
@@ -40,10 +41,11 @@ function Weather() {
                     <button>Click me</button>
                 </div>
 
-                <footer className="verjy">
+                <div className="verjy">
                     2025 City Weather Widget, All Rights Reserved | Design by W3layouts
-                </footer>
+                </div>
             </div>
+        </div>
     );
 }
 
