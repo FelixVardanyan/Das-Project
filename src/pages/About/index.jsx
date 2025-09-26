@@ -1,7 +1,19 @@
+import Title from "../../components/Title/Title"
 import "./About.css"
+import Saturn from "./saturn.jpeg"
 
-export default function About() {
-    return( 
-        <h1>About us</h1>
+const About = () => {
+    return (
+        <div className="about">
+            <div className="wrap">
+                <div className="card">
+                    <div className="card-image">
+                        <img src={Saturn} alt="saturn"/>
+                        <Title/>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
+export default About;

@@ -1,0 +1,10 @@
+.inputtietel {
+    height: 40px;
+    margin-top: 20px;
+    border: 3px solid gray;
+    outline: none;
+}
+
+.inputtietel:hover {
+    border: 5px solid pink;
+}
