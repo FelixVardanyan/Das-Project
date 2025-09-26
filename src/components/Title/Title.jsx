@@ -19,7 +19,7 @@ function Title(props) {
             <div className="card-titel-top">
                 <input className="inputtietel" type="text" onChange={handleChange} />
             </div>
-            <p>{ text }</p>
+            <p className="gago">{ text }</p>
         </div>
     )
 }
