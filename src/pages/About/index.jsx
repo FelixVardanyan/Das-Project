@@ -1,3 +1,4 @@
+import Comments from "../../components/Comments/Comments"
 import Likes from "../../components/Likes/Likes"
 import Title from "../../components/Title/Title"
 import "./About.css"
@@ -13,6 +14,7 @@ const About = () => {
                         <Title/>
                         <Likes/>
                     </div>
+                    <Comments/>
                 </div>
             </div>
         </div>
