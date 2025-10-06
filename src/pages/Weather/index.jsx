@@ -1,8 +1,43 @@
 import "./Weather.css"
 import nkar from "../../assets/City.jpg"
 import City from "../../assets/CityBack.jpg"
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+
 
 function Weather() {
+
+    const [input, setInput] = useState("")
+    const [data, setData] = useState([])
+    const [list, setList] = useState([])
+
+
+    const click = () => {
+        const api = `https:/api.openweathermap.org/data/2.5/forecast?q=${input}&appid=cb36d56d59a6202351fe6cff27d8977a`
+        axios.get(api).then((e) => {
+            setData(e.data)
+        }).catch(err =>
+            console.log(err)
+
+        )
+    }
+
+    useEffect(() => {
+        setList(data.list)
+    }, [data])
+
+
+    useEffect(() => {
+        const first = "https:/api.openweathermap.org/data/2.5/forecast?q=yerevan&appid=cb36d56d59a6202351fe6cff27d8977a"
+        axios.get(first).then((e) => {
+            setData(e.data)
+        }).catch(err =>
+            console.log(err)
+
+        )
+    }, [])
+
     return (
         <div className="background">
             <div className="hastatutyun">
@@ -16,11 +51,11 @@ function Weather() {
                             alt="city"
                         />
                         <div className="text-block">
-                            <h2>Yerevan City</h2>
-                            <p>Yerevan</p>
-                            <p>14:56:28</p>
+                            <h2>{data?.city?.name} City</h2>
+                            <p>{data?.city?.name}</p>
+                            {list?.length > 0 && <p>{list[0].dt_txt}</p>}
                             <p>Thursday, May 19, 2025</p>
-                            <div className="stugum">31.09 °C</div>
+                            <div className="stugum">{list?.length > 0 && Math.round(list[0]?.main.temp - 273.15) + "°C"}</div>
                         </div>
                     </div>
 
@@ -28,17 +63,32 @@ function Weather() {
                         <div className="icon">🌧️</div>
                         <h2>Cloudy</h2>
                         <div className="kanxik">
-                            <div><span>Now</span><span>20 °C</span></div>
-                            <div><span>09:00</span><span>22 °C</span></div>
-                            <div><span>12:00</span><span>24 °C</span></div>
-                            <div><span>15:00</span><span>23 °C</span></div>
+                            {list?.map((e, i) => {
+                                if (i < 5) {
+                                    return (
+                                        <div key={i}>
+                                            <span>
+                                                {e.dt_txt}
+
+                                            </span>
+                                            <span>
+                                                {Math.round(e.main.temp - 273.15) + "°C"}
+                                            </span>
+                                        </div>)
+                                }
+                            })}
+
                         </div>
                     </div>
                 </div>
 
                 <div className="qnakum">
-                    <input type="text" placeholder="yerevan" />
-                    <button>Click me</button>
+                    <input type="text" placeholder="greq qaxaq"
+                        defaultValue="yerevan"
+                        onChange={(e) => setInput(e.target.value)}
+                        value={input}
+                    />
+                    <button onClick={click}>Click me</button>
                 </div>
 
                 <div className="verjy">
@@ -47,6 +97,7 @@ function Weather() {
             </div>
         </div>
     );
+
 }
 
 export default Weather;
